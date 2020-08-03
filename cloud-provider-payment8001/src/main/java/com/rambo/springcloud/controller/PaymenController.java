@@ -30,7 +30,7 @@ public class PaymenController {
 
     @GetMapping("/select")
     public ResultBody<Payment> select(@RequestParam("id") Integer id) {
-        log.info("request params is : {}", id);
+        log.info("request para is : {}", id);
         Payment payment = paymentService.getPaymentById(id);
         log.info("result : ", payment.toString());
         if (payment != null) {
