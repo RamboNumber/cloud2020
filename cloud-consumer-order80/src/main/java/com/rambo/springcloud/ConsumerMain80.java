@@ -1,8 +1,8 @@
 package com.rambo.springcloud;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import static org.springframework.boot.SpringApplication.*;
 
 /**
  * Created by 翟博文 on 2020/8/3 23:11
@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ConsumerMain80 {
     public static void main(String[] args) {
-        SpringApplication.run(ConsumerMain80.class);
+        run(ConsumerMain80.class, args);
     }
+
 }
