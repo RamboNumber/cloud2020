@@ -4,6 +4,8 @@ import com.rambo.springcloud.common.ResultBody;
 import com.rambo.springcloud.entities.Payment;
 import com.rambo.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -15,13 +17,14 @@ import javax.annotation.Resource;
 @Slf4j
 @RequestMapping("/payment")
 public class PaymenController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(PaymenController.class);
     @Resource
     private PaymentService paymentService;
 
     @PostMapping("/create")
     public ResultBody<Payment> create(@RequestBody Payment payment) {
         int result = paymentService.create(payment);
-        log.info("result : ", result);
+        LOGGER.info("result : ", result);
         if (result > 0) {
             return new ResultBody<>(200, "插入数据成功");
         }
@@ -29,10 +32,9 @@ public class PaymenController {
     }
 
     @GetMapping("/select")
-    public ResultBody<Payment> select(@RequestParam("id") Integer id) {
-        log.info("request para is : {}", id);
+    public ResultBody<Payment> select(@RequestParam(value = "id", required = false) Integer id) {
+        LOGGER.info("request para is : {}", id);
         Payment payment = paymentService.getPaymentById(id);
-        log.info("result : ", payment.toString());
         if (payment != null) {
             return new ResultBody<>(200, "select success", payment);
         }
