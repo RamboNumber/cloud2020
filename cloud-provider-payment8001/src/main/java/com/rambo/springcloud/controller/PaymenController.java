@@ -23,6 +23,7 @@ public class PaymenController {
 
     @PostMapping("/create")
     public ResultBody<Payment> create(@RequestBody Payment payment) {
+
         int result = paymentService.create(payment);
         LOGGER.info("result : ", result);
         if (result > 0) {
