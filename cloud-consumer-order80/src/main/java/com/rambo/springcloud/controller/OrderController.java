@@ -18,7 +18,8 @@ import java.util.Map;
 public class OrderController {
     private static Logger LOGGER = LoggerFactory.getLogger(OrderController.class);
 
-    public static final  String PAYMENT_URL = "http://localhost:8001";
+//    public static final  String PAYMENT_URL = "http://localhost:8001";
+    public static final  String PAYMENT_URL = "http://CLOUD-PROVIDER-SERVICE";
 
     @Resource
     private RestTemplate restTemplate;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.rambo.com.rambo.springcloud.dao.PaymentMapper">
+<mapper namespace="com.rambo.springcloud.dao.PaymentMapper">
 
     <insert id="create" parameterType="com.rambo.springcloud.entities.Payment" useGeneratedKeys="true" keyProperty="id">
         insert into payment (serial) values (#{serial, jdbcType=VARCHAR});

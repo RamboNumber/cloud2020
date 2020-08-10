@@ -14,7 +14,7 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.rambo.com.rambo.springcloud.entities       #所有Entity别名类所在包
+  type-aliases-package: com.rambo.springcloud.entities       #所有Entity别名类所在包
 
 # 想注册中心eureka注册
 eureka:
