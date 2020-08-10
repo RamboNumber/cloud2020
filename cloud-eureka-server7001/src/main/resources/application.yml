@@ -12,3 +12,8 @@ eureka:
     #设置与eureka Server交互的地址查询服务和注册服务都需要以来这个地址（可视化页面）
     service-url:
      defaultZone: http://eureka7002.com:7002/eureka
+
+  server:
+    #关闭自我保护机制，保证不可用服务即使清除
+#    enable-self-preservation: false
+#    eviction-interval-timer-in-ms: 2000
