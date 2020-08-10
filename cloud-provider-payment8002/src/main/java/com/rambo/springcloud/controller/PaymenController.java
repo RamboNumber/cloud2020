@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import javax.validation.Valid;
 
 /**
  * Created by 翟博文 on 2020/7/28 23:12
@@ -32,7 +31,7 @@ public class PaymenController {
         int result = paymentService.create(payment);
         LOGGER.info("result : ", result);
         if (result > 0) {
-            return new ResultBody<>(200, "插入数据成功,serverPort:"+serverPort, payment);
+            return new ResultBody<>(200, "插入数据成功, serverPort:"+serverPort, payment);
         }
         return new ResultBody<>(433, "插入失败");
     }
