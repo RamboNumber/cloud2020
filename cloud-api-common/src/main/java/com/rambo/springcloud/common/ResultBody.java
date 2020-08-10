@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
  * Created by 翟博文 on 2020/7/28 22:51
  */
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class ResultBody<T> {
     private Integer code;
@@ -18,6 +17,12 @@ public class ResultBody<T> {
     public ResultBody(Integer code, String message) {
         this.code = code;
         this.message = message;
+    }
+
+    public ResultBody(Integer code, String message, T data) {
+        this.code = code;
+        this.message = message;
+        this.data = data;
     }
 
 }

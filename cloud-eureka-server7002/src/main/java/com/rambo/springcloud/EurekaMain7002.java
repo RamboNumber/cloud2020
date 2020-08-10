@@ -1,19 +1,19 @@
 package com.rambo.springcloud;
 
-import javafx.application.Application;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 /**
- * Created by 翟博文 on 2020/8/3 23:11
+ * @author rambo
+ * @version 1.0
+ * @date 2020/8/8 0:14
  */
 @SpringBootApplication
-@EnableEurekaClient
-public class ConsumerMain80 {
+@EnableEurekaServer
+public class EurekaMain7002 {
     public static void main(String[] args) {
-        SpringApplication.run(ConsumerMain80.class, args);
+        SpringApplication.run(EurekaMain7002.class, args);
     }
-
 }
