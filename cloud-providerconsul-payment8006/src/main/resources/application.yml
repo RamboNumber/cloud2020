@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: payment
+    name: cloud-provider-payment
 #consul注册中心
   cloud:
     consul:
