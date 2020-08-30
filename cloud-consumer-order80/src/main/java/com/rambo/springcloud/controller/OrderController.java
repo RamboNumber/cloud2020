@@ -5,6 +5,7 @@ import com.rambo.springcloud.entity.Payment;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -34,5 +35,15 @@ public class OrderController {
         Map<String, Integer> map = new HashMap<>();
         map.put("id", id);
         return restTemplate.getForObject(PAYMENT_URL+"/payment/select/",ResultBody.class, map);
+    }
+
+    @PostMapping("/payment/create1")
+    public ResultBody<Payment> create1(@RequestBody Payment payment) {
+        ResponseEntity<ResultBody> entity = restTemplate.postForEntity(PAYMENT_URL+"/payment/create", payment, ResultBody.class);
+        LOGGER.info("entity is : {}", entity.toString());
+        if (entity.getStatusCode().is2xxSuccessful()) {
+            return entity.getBody();
+        }
+        return new ResultBody<>(444, "调用失败");
     }
 }
