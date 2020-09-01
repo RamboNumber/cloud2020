@@ -44,8 +44,8 @@ public class PaymenController {
         return new ResultBody<>(433, "插入失败");
     }
 
-    @GetMapping("/select")
-    public ResultBody<Payment> select(@RequestParam(value = "id", required = false) Integer id) {
+    @GetMapping("/select/{id}")
+    public ResultBody<Payment> select(@PathVariable("id") Integer id) {
         LOGGER.info("request para is : {}", id);
         Payment payment = paymentService.getPaymentById(id);
         if (payment != null) {
@@ -67,6 +67,11 @@ public class PaymenController {
             LOGGER.info(instance.getServiceId()+"\t"+instance.getHost()+"\t"+instance.getPort()+"\t"+instance.getUri());
         }
         return this.discoveryClient;
+    }
+
+    @GetMapping("/lb")
+    public String getPaymentPort() {
+        return serverPort;
     }
 
 
