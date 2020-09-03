@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by 翟博文 on 2020/7/28 23:12
@@ -47,6 +48,14 @@ public class PaymenController {
     @GetMapping("/select/{id}")
     public ResultBody<Payment> select(@PathVariable("id") Integer id) {
         LOGGER.info("request para is : {}", id);
+
+        // 延时三秒，测试feign调用超时时间
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         Payment payment = paymentService.getPaymentById(id);
         if (payment != null) {
             return new ResultBody<>(200, "select success", payment);

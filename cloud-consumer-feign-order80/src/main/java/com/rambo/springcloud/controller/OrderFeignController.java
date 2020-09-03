@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 /**
  * @author rambo
  * @version 1.0
@@ -20,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderFeignController {
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderFeignController.class);
 
-    @Autowired
+    @Resource
     private PaymentFeignService paymentFeignService;
 
     @GetMapping(value = "consumer/payment/getPayment/{id}")
