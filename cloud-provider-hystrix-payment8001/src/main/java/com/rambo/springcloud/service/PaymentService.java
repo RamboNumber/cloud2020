@@ -1,5 +1,7 @@
 package com.rambo.springcloud.service;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -24,8 +26,12 @@ public class PaymentService {
         return "线程池：" + Thread.currentThread().getName()+ " paymentInfo_ok, id: " + id + "\t" + "O(∩_∩)O";
     }
 
+    @HystrixCommand(fallbackMethod = "paymentInfo_timeoutHandler", commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000")
+    })
     public String paymentInfo_timeout(Integer id) {
-        int time = 3;
+        int time = 5;
+//        int age =1/0;
 
         try {
             TimeUnit.SECONDS.sleep(time);
@@ -34,7 +40,11 @@ public class PaymentService {
         }
 
         return "线程池：" + Thread.currentThread().getName()+ " paymentInfo_timeout, id: " + id + "\t" + "O(∩_∩)O"
-                + "耗时"+time+"秒钟";
+                + "耗时"+"秒钟";
+    }
+
+    public String paymentInfo_timeoutHandler(Integer id) {
+        return "线程池：" + Thread.currentThread().getName()+ " 系统繁忙请稍后再试, id: " + id + "\t" + "/(ㄒoㄒ)/~~";
     }
 
 

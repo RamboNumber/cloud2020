@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: cloud-provider-hsytrix-payment
+    name: cloud-provider-hystrix-payment
 
 eureka:
   client:
@@ -13,5 +13,5 @@ eureka:
       defaultZone: http://eureka7001.com:7001/eureka
 
   instance:
-    instance-id: cloud-provider-hsytrix-payment8001
+    instance-id: cloud-provider-hystrix-payment8001
     prefer-ip-address: true
