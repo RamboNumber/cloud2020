@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2020/9/7 22:38
  */
 @RestController
-@DefaultProperties(defaultFallback = "paymentGlobalFallBack")
+//@DefaultProperties(defaultFallback = "paymentGlobalFallBack")
 public class PaymentHysTrixController {
     private static final Logger LOGGER = LoggerFactory.getLogger(PaymentHysTrixController.class);
 
@@ -40,7 +40,7 @@ public class PaymentHysTrixController {
 //    })
     @HystrixCommand
     String paymentInfo_timeout(@PathVariable("id") Integer id) {
-        int a = 1/0;
+//        int a = 1/0;
         String result = paymentHysTrixService.paymentInfo_timeout(id);
         return result;
     }
